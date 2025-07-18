@@ -1,0 +1,24 @@
+import os
+from twilio.rest import Client
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
+
+# Read from .env
+account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+auth_token = os.getenv("TWILIO_AUTH_TOKEN")
+twilio_number = os.getenv("TWILIO_WHATSAPP_NUMBER")
+my_number = os.getenv("MY_WHATSAPP_NUMBER")
+
+# Create client
+client = Client(account_sid, auth_token)
+
+# Send WhatsApp message
+message = client.messages.create(
+    from_=twilio_number,
+    to=my_number,
+    body="🚀 Double Danger Aviator Tool is LIVE! Alerts are working on WhatsApp."
+)
+
+print(f"✅ Message sent! SID: {message.sid}")
