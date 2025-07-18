@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviator Safe Exit Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      text-align: center;
+      padding: 30px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      max-width: 400px;
+      margin: auto;
+    }
+    .button {
+      background: #22c55e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .log {
+      background: #334155;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Aviator Low-Risk Strategy Tool</h2>
+    <p>Recommended Cashout: <strong>1.50x to 2.00x</strong></p>
+    <button class="button" onclick="generatePrediction()">Get Prediction</button>
+    <div class="log" id="log"></div>
+  </div>
+
+  <script>
+    const logDiv = document.getElementById('log');
+
+    function generatePrediction() {
+      const pattern = ["Likely Safe — Try 1.65x", "Caution — Cash Early (~1.30x)", "Unstable Round — Skip This One", "Safe Window — 1.85x Possible"];
+      const pick = pattern[Math.floor(Math.random() * pattern.length)];
+      const timestamp = new Date().toLocaleTimeString();
+      const entry = `${timestamp}: ${pick}`;
+      const p = document.createElement('p');
+      p.textContent = entry;
+      logDiv.prepend(p);
+    }
+  </script>
+</body>
+</html>
